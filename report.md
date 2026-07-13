@@ -1,7 +1,6 @@
 # Vehicle Dynamics IMU Project — Project Report
 
 **Author:** Kanak Potdar
-**Location:** `OneDrive/Documents/Arduino`
 **Report date:** 2026-07-10
 
 ---
