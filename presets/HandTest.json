@@ -1,0 +1,9 @@
+{
+  "name": "HandTest",
+  "mass_kg": 2.0,
+  "wheelbase_m": 0.002,
+  "cg_height_m": 0.002,
+  "cg_to_front_m": 0.001,
+  "track_width_m": 0.002,
+  "front_mass_kg": 1.0
+}
