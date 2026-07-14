@@ -94,7 +94,7 @@ flowchart LR
 | Custom carrier PCB | 2-layer KiCad shield mounting the ESP32 and BNO085 with correct I2C pull-ups, decoupling, and address/protocol strapping |
 
 <!-- TODO: photo of the assembled PCB + ESP32 + BNO085 shield -->
-<!-- TODO: KiCad 3D render of esp32_bno085_shield -->
+![KiCad 3D render — ESP32 + BNO085 shield](docs/kicad_3d_render.png)
 
 ### I2C Wiring (as implemented — intentionally non-default)
 
