@@ -186,7 +186,7 @@ The ESP32 is configured as the I2C master. It initiates all transactions to poll
 ---
 
 ### 3. Code Walkthrough
-In `Step01_BNO085_Initialization.ino.ino`, the I2C peripheral is configured:
+In `Step01_BNO085_Initialization.ino`, the I2C peripheral is configured:
 ```cpp
 // Lines 47-48: Pin mappings for custom wiring layout
 static const int PIN_SDA = 22;
@@ -273,7 +273,7 @@ Decoupling capacitors ($0.1\,\mu\text{F}$ and $10\,\mu\text{F}$) act as local en
 ---
 
 ### 3. Code Walkthrough
-In `Step01_BNO085_Initialization.ino.ino`, the pin configurations are defined:
+In `Step01_BNO085_Initialization.ino`, the pin configurations are defined:
 ```cpp
 // Lines 47-48: Pin mappings for custom wiring layout
 static const int PIN_SDA = 22;
@@ -356,7 +356,7 @@ Read Sequence:
 ---
 
 ### 3. Code Walkthrough
-In `Step01_BNO085_Initialization.ino.ino`, the I2C configuration is setup:
+In `Step01_BNO085_Initialization.ino`, the I2C configuration is setup:
 ```cpp
 // Line 108: Configure clock speed
 Wire.setClock(400000);  // Set SCL clock speed to 400,000 Hz

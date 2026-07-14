@@ -134,7 +134,7 @@ Built incrementally; each step adds one capability and is verified on hardware b
 
 | Step | Sketch | What it adds |
 |---|---|---|
-| 01 | [`Step01_BNO085_Initialization`](Step01_BNO085_Initialization.ino/Step01_BNO085_Initialization.ino.ino) | Brings up I2C (`Wire.begin(22,21)`, 400 kHz), opens an SH-2 session with the BNO085 at `0x4B`, reads back firmware/product-ID metadata |
+| 01 | [`Step01_BNO085_Initialization`](Step01_BNO085_Initialization/Step01_BNO085_Initialization.ino) | Brings up I2C (`Wire.begin(22,21)`, 400 kHz), opens an SH-2 session with the BNO085 at `0x4B`, reads back firmware/product-ID metadata |
 | 02 | [`Step02_Read_SH2`](Step02_Read_SH2/Step02_Read_SH2.ino) | Adds reset recovery — automotive 12 V systems brown out during engine cranking, so `imu.wasReset()` is polled every loop and all reports are re-enabled if the chip resets mid-drive |
 | 03 | [`Step03_Enable_Reports`](Step03_Enable_Reports/Step03_Enable_Reports.ino) | Enables the three SH-2 reports needed (Rotation Vector `0x05`, Gyroscope `0x02`, Linear Acceleration `0x04`) and drains the SHTP input queue each loop |
 | 04 | [`Step04_Verify_Report_IDs`](Step04_Verify_Report_IDs/Step04_Verify_Report_IDs.ino) | Verifies each report ID is actually arriving at its configured rate before trusting the decoded values |
@@ -228,8 +228,11 @@ Implemented in [`step11_iso4138_analysis.py`](step11_iso4138_analysis.py) using 
 | Metric | Value |
 |---|---|
 | Ground-truth Roll Gradient (built into the generator) | 9.5 deg/g |
-| Pipeline-recovered Roll Gradient on the synthetic CSV | <!-- TODO: run `step11_iso4138_analysis.py` on imu_log_synthetic_EV656_ISO4138.csv and paste the reported Roll Gradient + R² --> |
-| Pipeline-recovered Yaw Rate Gradient | <!-- TODO --> |
+| Pipeline-recovered Roll Gradient (CW) | 9.497 deg/g, R² = 0.9996 [PASS] |
+| Pipeline-recovered Roll Gradient (CCW) | 9.505 deg/g, R² = 0.9997 [PASS] |
+| Pipeline-recovered Roll Gradient (combined CW+CCW) | **9.501 deg/g** — within 0.01% of ground truth |
+| Pipeline-recovered Yaw Rate Gradient (CW / CCW) | 56.935 / 56.447 (deg/s)/g, R² = 0.9925 / 0.9913 |
+| Steady-state windows detected | 14 (6 CW, 8 CCW) out of 10,440 synthetic samples |
 
 ### Real-Vehicle Testing
 
@@ -250,7 +253,7 @@ IMU-Based-Vehicle-Dynamics-Measurement-System/
 ├── app.py                              Streamlit entry point
 ├── dashboard/                          UI package (ui, state, runner, pipeline, presets)
 ├── Gerber_PCB/                         KiCad-exported fabrication files (esp32_bno085_shield)
-├── Step01_BNO085_Initialization.ino/   ESP32 firmware — I2C + SH-2 bring-up
+├── Step01_BNO085_Initialization/       ESP32 firmware — I2C + SH-2 bring-up
 ├── Step02_Read_SH2/                    ESP32 firmware — reset recovery
 ├── Step03_Enable_Reports/              ESP32 firmware — enable SH-2 reports
 ├── Step04_Verify_Report_IDs/           ESP32 firmware — verify report rates

@@ -13,7 +13,7 @@ Usage:
     1. Flash Step 07 firmware to ESP32
     2. Close Arduino IDE Serial Monitor
     3. Open Command Prompt
-    4. cd "C:\\Users\\Kanak Potdar\\OneDrive\\Documents\\Arduino"
+    4. cd /path/to/IMU-Based-Vehicle-Dynamics-Measurement-System
     5. python step08_serial_logger.py
     6. Press Ctrl+C to stop logging
 
