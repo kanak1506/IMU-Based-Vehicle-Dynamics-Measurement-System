@@ -63,7 +63,7 @@ flowchart TD
     end
     B --> C[Step01-07 Firmware\nInit -> Reset Recovery -> Enable Reports\n-> Verify IDs -> Decode -> Sync Gate -> CSV row]
     C -->|USB Serial 115200 baud\nCSV: quat, gyro, linear accel| D[step08_serial_logger.py\nimu_log_YYYYMMDD_HHMMSS.csv]
-    D --> E[step09_plots.py\nRaw sensor health: quat, |q|, gyro, accel]
+    D --> E[step09_plots.py\nRaw sensor health: quat, norm(q), gyro, accel]
     D --> F[step10_vehicle_dynamics.py\nQuaternion to Euler, rad/s to deg/s,\nm/s^2 to g, 10 Hz Butterworth LPF]
     F --> G[step11_iso4138_analysis.py\n2 Hz LPF -> steady-state windows\n-> CW/CCW regression -> R^2 gate]
     D --> H[Streamlit Dashboard\napp.py]
